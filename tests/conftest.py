@@ -19,3 +19,20 @@ def linked_list_sample() -> Linked_List:
 @pytest.fixture
 def linked_list_empty():
     return Linked_List()
+
+@pytest.fixture
+def linked_list_one() -> Linked_List:
+    node1 = Node(1)
+    linked_list = Linked_List(head=node1)
+
+    return linked_list
+
+@pytest.fixture
+def linked_list_two() -> Linked_List:
+    node1 = Node(1)
+    node2 = Node(2)
+
+    node1.next = node2
+    linked_list = Linked_List(head=node1)
+
+    return linked_list

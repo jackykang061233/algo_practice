@@ -47,4 +47,37 @@ class Linked_List:
         current_node.next = node
 
 
+    def delete(self, index: int):
+        if not self.head:
+            raise IndexError('index out of range')
         
+        if index == 0:
+            self.head = self.head.next
+            return
+
+        current_node = self.head
+        for _ in range(index-1):
+            if not current_node.next:
+                raise IndexError('index out of range')
+            current_node = current_node.next
+        if not current_node.next:
+            raise IndexError('index out of range')
+        current_node.next = current_node.next.next
+
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+
+    def to_list(self):
+        result = []
+        current_node = self.head
+        while current_node:
+            result.append(current_node.value)
+            current_node = current_node.next
+        return result
