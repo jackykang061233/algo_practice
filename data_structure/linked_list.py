@@ -26,20 +26,24 @@ class Linked_List:
         last_node.next = node
 
     def insert(self, node: Union[Node, float], index: int):
+        """ insert node to a given index """
         if not isinstance(node, Node):
             node = Node(node)
 
-        if index == 0:
-            if self.head:
+        if index == 0: # if added at head
+            if self.head: # if linked_list not empty
                 node.next = self.head
             self.head = node
             return
+        if not self.head:
+            raise IndexError('index out of range')
 
         last_node = self.head
         count = 0
         while last_node.next and count != index-1:
             count += 1
             last_node = last_node.next
+
         if count < index-1:
             raise IndexError('index out of range')
         else:

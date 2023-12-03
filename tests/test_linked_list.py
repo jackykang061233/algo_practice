@@ -1,5 +1,5 @@
 import pytest
-from data_structure.practice import Node
+from data_structure.linked_list import Node
 
 
 def test_append(linked_list_sample):
@@ -66,12 +66,18 @@ def test_insert_end(linked_list_sample):
     assert list_nodes == [1, 2, 3, 4, 5]
     assert not to_append_node.next
 
-def test_insert_empty(linked_list_empty):
+def test_insert_empty_head(linked_list_empty):
     to_append_node = Node(5)
 
     linked_list_empty.insert(to_append_node, 0)
     
     assert linked_list_empty.head == to_append_node
+
+def test_insert_empty(linked_list_empty):
+    with pytest.raises(IndexError):
+        to_append_node = Node(5)
+
+        linked_list_empty.insert(to_append_node, 1)
 
 def test_insert_out_index(linked_list_sample):
     with pytest.raises(IndexError):
