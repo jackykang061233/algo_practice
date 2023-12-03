@@ -19,11 +19,11 @@ class Linked_List:
             self.head = node
             return
         
-        last_node = self.head
-        while last_node.next:
-            last_node = last_node.next
+        current_node = self.head
+        while current_node.next:
+            current_node = current_node.next
 
-        last_node.next = node
+        current_node.next = node
 
     def insert(self, node: Union[Node, float], index: int):
         """ insert node to a given index """
@@ -31,25 +31,20 @@ class Linked_List:
             node = Node(node)
 
         if index == 0: # if added at head
-            if self.head: # if linked_list not empty
-                node.next = self.head
+            node.next = self.head
             self.head = node
             return
         if not self.head:
             raise IndexError('index out of range')
 
-        last_node = self.head
-        count = 0
-        while last_node.next and count != index-1:
-            count += 1
-            last_node = last_node.next
+        current_node = self.head
+        for _ in range(index-1):
+            if not current_node.next:
+                raise IndexError('index out of range')
+            current_node = current_node.next
 
-        if count < index-1:
-            raise IndexError('index out of range')
-        else:
-            next_node = last_node.next
-            last_node.next = node
-            node.next = next_node
-            
+        node.next = current_node.next
+        current_node.next = node
 
 
+        
