@@ -85,7 +85,7 @@ def test_delete_empty(linked_list_empty):
     with pytest.raises(IndexError):
         linked_list_empty.delete(1)
 
-def test_delete_empty(linked_list_sample):
+def test_delete_out_range(linked_list_sample):
     with pytest.raises(IndexError):
         linked_list_sample.delete(4)
 
