@@ -1,7 +1,31 @@
 import pytest
 from data_structure.linked_list import Node
 
+# test node
+def test_initialize_with_float_value():
+    node = Node(3.14)
+    assert node.value == 3.14
+    assert node.next is None
 
+def test_initialize_with_next_node_object():
+    next_node = Node(2.71)
+    node = Node(3.14, next_node)
+    assert node.value == 3.14
+    assert node.next == next_node
+
+def test_initialize_with_non_float_value():
+    with pytest.raises(TypeError):
+        node = Node("Hello")
+        assert node.value == "Hello"
+        assert node.next is None
+
+def test_node_next_type():
+    with pytest.raises(TypeError):
+        node = Node(10.5)
+        node.next = "invalid"
+
+
+# test linked_list
 def test_append(linked_list_sample):
     to_append_node = Node(5)
 

@@ -3,9 +3,15 @@ from typing import Optional, Union
 
 @dataclass
 class Node:
-    value: float
-    next: Optional['Node'] = None
+    value: Union[float, int]
+    next: 'Node' = None
 
+    def __setattr__(self, name, value):
+        if name == 'value' and not isinstance(value, (int, float)):
+            raise TypeError(f"Expected 'value' to be a float or int, but got {type(value).__name__}")
+        if name == 'next' and value is not None and not isinstance(value, Node):
+            raise TypeError(f"Expected 'next' to be a Node, but got {type(value).__name__}")
+        super().__setattr__(name, value)
 
 class Linked_List:
     def __init__(self, head: Node = None):
