@@ -8,6 +8,7 @@
 using namespace std;
 
 vector<string> bfs(const unordered_map<string, unordered_set<string>>& graph, const string& start){
-
+    vector<string> v = {"A"};
+    return v;
 }
 
