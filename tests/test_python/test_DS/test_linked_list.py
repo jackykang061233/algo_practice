@@ -1,6 +1,7 @@
 import pytest
 from python.DS.linked_list import Node, Linked_List
 
+
 @pytest.fixture
 def linked_list_sample() -> Linked_List:
     node1 = Node(1)
