@@ -1,5 +1,5 @@
 import pytest
-from data_structure.linked_list import Node
+from python.DS.linked_list import Node
 
 # test node
 def test_initialize_with_float_value():
