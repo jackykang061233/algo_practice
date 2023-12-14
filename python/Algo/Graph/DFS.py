@@ -1,18 +1,15 @@
-from collections import deque
-
-def bfs(graph, start):
+def dfs(graph, start):
     visited = set()
-    queue = deque([start])
+    stack = [start]
     traversal_order = []
 
-    while queue:
-        node = queue.popleft()
+    while stack:
+        node = stack.pop()
         if node not in visited:
             traversal_order.append(node)
             visited.add(node)
-            neighbors = sorted(graph[node] - visited)
-            print(neighbors)
-            queue.extend(neighbors)
+            neighbors = sorted(graph[node] - visited, reverse=True)
+            stack.extend(neighbors)
     return traversal_order
 
 if __name__ == '__main__':
@@ -26,4 +23,7 @@ if __name__ == '__main__':
         'G': {'C'},
         'H': {'E'}
     }
-    print(bfs(graph, 'A'))
+
+    print(dfs(graph, 'A'))
+
+
